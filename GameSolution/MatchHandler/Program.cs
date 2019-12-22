@@ -20,38 +20,61 @@ namespace MatchHandler
             BaseClass player1Class = new DemoEngineClass1();
             BaseClass player2Class = new DemoEngineClass1();
 
-            int turnIndex = 0;
+            GameState state = new GameState(10, 10);
 
-            RequestedLine requestedNextMove = null;
+            int turnIndex = 0;
 
             while ( turnIndex < 20 )
             {
-
-                requestedNextMove = null;
 
                 turnIndex++;
 
                 int turnAttempts = 0;
 
-                while (turnAttempts < 10 && true)
+                int playerID = 0;
+
+                while ( turnAttempts < 10 )
                 {
+
+                    RequestedLine requestedNextMove = null;
+
+                    turnAttempts++;
 
                     if (turnIndex % 2 == 0)
                     {
 
+                        playerID = playerID1;
                         requestedNextMove = player1Class.MakeNextMove();
 
                     }
                     else
                     {
 
+                        playerID = playerID2;
                         requestedNextMove = player2Class.MakeNextMove();
 
                     }
 
+                    if ( ! ( Utilities.LineIsValid(requestedNextMove, state) ) )
+                    {
+                        continue;
+                    }
+                    else
+                    {
+                        Line nextMoveLine = new Line(requestedNextMove.Start, requestedNextMove.End, playerID);
+                        state.addLine(nextMoveLine);
+                        Utilities.LogError($"player with ID: {playerID} add line from {nextMoveLine.Start} to {nextMoveLine.End}");
+                    }
+
                 }
 
+                player1Class.ProcessLastMove(state);
+                player2Class.ProcessLastMove(state);
+
             }
+
+            Console.WriteLine("done");
+            Console.ReadLine();
 
         }
 

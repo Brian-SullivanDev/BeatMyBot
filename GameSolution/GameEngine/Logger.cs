@@ -22,6 +22,8 @@ namespace GameEngine
 
             var dateFileHandle = DateTime.Now.ToString("yyyyMMdd", System.Globalization.CultureInfo.InvariantCulture);
 
+
+
             using (StreamWriter sw = File.AppendText($"{filePathBase}BMB_{dateFileHandle}.log"))
             {
 

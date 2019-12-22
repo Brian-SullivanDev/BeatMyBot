@@ -38,6 +38,20 @@ namespace GameEngine
             }
         }
 
+        public GameState (int height, int width)
+        {
+
+            _height = height;
+            _width = width;
+            _lines = new List<Line>();
+
+        }
+
+        public void addLine (Line line)
+        {
+            _lines.Add(line);
+        }
+
     }
 
 }

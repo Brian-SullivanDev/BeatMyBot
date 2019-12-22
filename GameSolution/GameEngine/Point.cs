@@ -34,21 +34,50 @@ namespace GameEngine
             _y = y;
         }
 
-
-
-        public static bool operator == (Point other)
+        public override bool Equals(object obj)
         {
+
+            var other = obj as Point;
+
+            return other.X == this.X && other.Y == this.Y;
+
+        }
+
+        public static bool operator == (Point thisPoint, Point other)
+        {
+
+            try
+            {
+                return thisPoint.X == other.Y && thisPoint.Y == other.Y;
+            }
+            catch (Exception)
+            {
+                
+            }
+
+            return false;
+
+        }
+
+        public static bool operator != (Point thisPoint, Point other)
+        {
+
+            try
+            {
+                if ( thisPoint.X == other.Y && thisPoint.Y == other.Y )
+                {
+                    return false;
+                }
+            }
+            catch (Exception)
+            {
+
+            }
 
             return true;
 
         }
-
-        public static bool operator != (Point other)
-        {
-
-            return true;
-
-        }
+        
 
     }
 

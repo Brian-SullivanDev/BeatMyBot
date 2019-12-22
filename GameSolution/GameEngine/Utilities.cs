@@ -71,11 +71,10 @@ namespace GameEngine
         }
 
         /// <summary>
-        /// Returns true if the line requested is possible and false otherwise
+        /// Returns true if the line requested is possible according to the current game state and false otherwise
         /// </summary>
-        /// <param name="line"></param>
-        /// <param name="state"></param>
-        /// <returns></returns>
+        /// <param name="line">new line</param>
+        /// <param name="state">current game state</param>
         public static bool LineIsValid (RequestedLine line, GameState state)
         {
 
@@ -91,7 +90,7 @@ namespace GameEngine
 
                     Point testPoint = adjacentPoints[index];
 
-                    if (testPoint.X == line.End.X && testPoint.Y == line.End.Y)
+                    if (testPoint == line.End)
                     {
                         return true;
                     }
@@ -110,6 +109,11 @@ namespace GameEngine
 
         }
 
+        /// <summary>
+        /// returns true if the line already exists within the game state
+        /// </summary>
+        /// <param name="line">new line</param>
+        /// <param name="state">current game state</param>
         public static bool LineAlreadyExists (RequestedLine line, GameState state)
         {
 
@@ -123,7 +127,7 @@ namespace GameEngine
 
                     Line existingLine = state.Lines[index];
 
-                    if ( true )
+                    if ( existingLine.Start == line.Start && existingLine.End == line.End )
                     {
 
                         return true;
