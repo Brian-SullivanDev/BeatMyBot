@@ -5,7 +5,7 @@ using System.Text;
 namespace GameEngine
 {
 
-    public class Line
+    public class RequestedLine
     {
 
         private Point _start;
@@ -28,6 +28,17 @@ namespace GameEngine
             }
         }
 
+        public RequestedLine (Point start, Point end)
+        {
+            _start = start;
+            _end = end;
+        }
+
+    }
+
+    public class Line : RequestedLine
+    {
+
         private int _playerID;
 
         public int PlayerID
@@ -38,11 +49,11 @@ namespace GameEngine
             }
         }
 
-        public Line (Point start, Point end, int playerID)
+        public Line(Point start, Point end, int playerID) : base(start, end)
         {
-            _start = start;
-            _end = end;
+
             _playerID = playerID;
+
         }
 
     }

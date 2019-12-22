@@ -34,6 +34,22 @@ namespace GameEngine
             _y = y;
         }
 
+
+
+        public static bool operator == (Point other)
+        {
+
+            return true;
+
+        }
+
+        public static bool operator != (Point other)
+        {
+
+            return true;
+
+        }
+
     }
 
 }

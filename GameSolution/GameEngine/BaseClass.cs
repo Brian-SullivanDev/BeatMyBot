@@ -27,7 +27,7 @@ namespace GameEngine
 
         }
 
-        public abstract void MakeNextMove();
+        public abstract RequestedLine MakeNextMove();
 
     }
 
