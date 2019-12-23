@@ -8,6 +8,11 @@ namespace GameEngine
     public class DemoEngineClass1 : BaseClass
     {
 
+        public DemoEngineClass1 (GameState initialState) : base (initialState)
+        {
+
+        }
+
         public override RequestedLine MakeNextMove()
         {
 
@@ -43,9 +48,18 @@ namespace GameEngine
 
                     List<Point> adjacentPoints = Utilities.GetAdjacentPoints(possiblePoint, State.Height, State.Width);
 
-                    if ( adjacentPoints.Count > 0 )
+                    for (int index = 0; index < adjacentPoints.Count; ++index)
                     {
-                        return new RequestedLine(possiblePoint, adjacentPoints[0]);
+
+                        Point possibleEndPoint = adjacentPoints[index];
+
+                        RequestedLine possibleLine = new RequestedLine(possiblePoint, possibleEndPoint);
+
+                        if (Utilities.LineIsValid(possibleLine, State))
+                        {
+                            return possibleLine;
+                        }
+
                     }
 
                 }

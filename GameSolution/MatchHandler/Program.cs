@@ -17,14 +17,14 @@ namespace MatchHandler
             int playerID1 = 1;
             int playerID2 = 2;
 
-            BaseClass player1Class = new DemoEngineClass1();
-            BaseClass player2Class = new DemoEngineClass1();
-
             GameState state = new GameState(10, 10);
+
+            BaseClass player1Class = new DemoEngineClass1(state);
+            BaseClass player2Class = new DemoEngineClass1(state);
 
             int turnIndex = 0;
 
-            while ( turnIndex < 20 )
+            while ( turnIndex < 365 )
             {
 
                 turnIndex++;
@@ -57,13 +57,15 @@ namespace MatchHandler
 
                     if ( ! ( Utilities.LineIsValid(requestedNextMove, state) ) )
                     {
+                        Utilities.LogError($"player with ID: {playerID} failed to issue a valid move.  {10 - turnAttempts} attempts remaining.");
                         continue;
                     }
                     else
                     {
                         Line nextMoveLine = new Line(requestedNextMove.Start, requestedNextMove.End, playerID);
                         state.addLine(nextMoveLine);
-                        Utilities.LogError($"player with ID: {playerID} add line from {nextMoveLine.Start} to {nextMoveLine.End}");
+                        Utilities.LogError($"player with ID: {playerID} added a line from {nextMoveLine.Start} to {nextMoveLine.End}");
+                        break;
                     }
 
                 }

@@ -14,7 +14,7 @@ namespace GameEngine
 
             var context = new StackFrame(1);
 
-            string errorFunction = $"{context.GetMethod().Name} - {context.GetMethod().Name}";
+            string errorFunction = context.GetMethod().Name;
 
             Logger.Instance.LogError(errorFunction, errorDetails);
 
@@ -39,12 +39,13 @@ namespace GameEngine
 
                     adjacentPoints.Add(new Point(origin.X - 1, origin.Y));
 
-                    if (origin.X < (width - 1))
-                    {
+                }
 
-                        adjacentPoints.Add(new Point(origin.X + 1, origin.Y));
+                if (origin.X < (width - 1))
+                {
 
-                    }
+                    adjacentPoints.Add(new Point(origin.X + 1, origin.Y));
+
                 }
 
                 if (origin.Y > 0)
@@ -52,12 +53,13 @@ namespace GameEngine
 
                     adjacentPoints.Add(new Point(origin.X, origin.Y - 1));
 
-                    if (origin.Y < (height - 1))
-                    {
+                }
 
-                        adjacentPoints.Add(new Point(origin.X, origin.Y + 1));
+                if (origin.Y < (height - 1))
+                {
 
-                    }
+                    adjacentPoints.Add(new Point(origin.X, origin.Y + 1));
+
                 }
 
             }
@@ -83,6 +85,11 @@ namespace GameEngine
             try
             {
 
+                if (line == null)
+                {
+                    return false;
+                }
+
                 List<Point> adjacentPoints = GetAdjacentPoints(line.Start, state.Height, state.Width);
 
                 for ( int index = 0; index < adjacentPoints.Count; ++index )
@@ -92,7 +99,7 @@ namespace GameEngine
 
                     if (testPoint == line.End)
                     {
-                        return true;
+                        return (!(LineAlreadyExists(line, state)));
                     }
 
                 }

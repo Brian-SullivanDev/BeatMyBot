@@ -34,6 +34,13 @@ namespace GameEngine
             _y = y;
         }
 
+        public override string ToString()
+        {
+
+            return $"({_x},{_y})";
+
+        }
+
         public override bool Equals(object obj)
         {
 
@@ -48,7 +55,7 @@ namespace GameEngine
 
             try
             {
-                return thisPoint.X == other.Y && thisPoint.Y == other.Y;
+                return thisPoint.X == other.X && thisPoint.Y == other.Y;
             }
             catch (Exception)
             {
@@ -64,7 +71,7 @@ namespace GameEngine
 
             try
             {
-                if ( thisPoint.X == other.Y && thisPoint.Y == other.Y )
+                if ( thisPoint.X == other.X && thisPoint.Y == other.Y )
                 {
                     return false;
                 }

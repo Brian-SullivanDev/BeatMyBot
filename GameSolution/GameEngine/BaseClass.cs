@@ -29,6 +29,13 @@ namespace GameEngine
 
         public abstract RequestedLine MakeNextMove();
 
+        public BaseClass (GameState initialState)
+        {
+
+            _state = initialState;
+
+        }
+
     }
 
 }
