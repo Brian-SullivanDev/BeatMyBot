@@ -13,6 +13,10 @@ namespace GameEngine
 
         }
 
+        /// <summary>
+        /// overrides the abstract provided in the base class.  This is the entry point from the calling program that allows us to customize our class and make it our own
+        /// </summary>
+        /// <returns>Next desired move in the game</returns>
         public override RequestedLine MakeNextMove()
         {
 
@@ -33,6 +37,9 @@ namespace GameEngine
 
         }
 
+        /// <summary>
+        /// Find the first available line that can be drawn and request it (null if none can be found)
+        /// </summary>
         private RequestedLine FindFirstAvailableLine ()
         {
 

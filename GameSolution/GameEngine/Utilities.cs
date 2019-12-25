@@ -9,6 +9,10 @@ namespace GameEngine
     public static class Utilities
     {
 
+        /// <summary>
+        /// invokes the Logger object in order to log an error according to the details provided and the context the request comes from
+        /// </summary>
+        /// <param name="errorDetails">details to log with the context of the calling sequence</param>
         public static void LogError (string errorDetails)
         {
 
@@ -134,7 +138,8 @@ namespace GameEngine
 
                     Line existingLine = state.Lines[index];
 
-                    if ( existingLine.Start == line.Start && existingLine.End == line.End )
+                    if ( existingLine.Start == line.Start && existingLine.End == line.End ||
+                       existingLine.Start == line.End && existingLine.End == line.Start)
                     {
 
                         return true;
@@ -150,6 +155,204 @@ namespace GameEngine
             }
 
             return lineAlreadyExists;
+
+        }
+
+        /// <summary>
+        /// returns false if any line in the collection do not already exist.  Returns true otherwise
+        /// </summary>
+        public static bool LinesAlreadyExist(List<RequestedLine> lines, GameState state)
+        {
+
+            bool linesAlreadyExist = false;
+
+            try
+            {
+
+                foreach (RequestedLine line in lines)
+                {
+
+                    if (!(LineAlreadyExists(line, state)))
+                    {
+                        return linesAlreadyExist;
+                    }
+
+                }
+
+                linesAlreadyExist = true;
+
+            }
+            catch (Exception ex)
+            {
+                LogError("(ex) - " + ex.Message);
+            }
+
+            return linesAlreadyExist;
+
+        }
+
+        /// <summary>
+        /// returns true if the requested line would close a box
+        /// </summary>
+        /// <param name="state">current game state</param>
+        /// <param name="line">requested line</param>
+        public static bool LineWillCloseABox (GameState state, RequestedLine line)
+        {
+
+            bool lineClosesBox = false;
+
+            try
+            {
+
+                Point start = line.Start;
+                Point end = line.End;
+
+                if ( start.X != end.X )
+                {
+                    return LineClosesHorizontalBox(state, line);
+                }
+                else
+                {
+                    return LineClosesVerticalBox(state, line);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                LogError("(ex) - " + ex.Message);
+            }
+
+            return lineClosesBox;
+
+        }
+
+        /// <summary>
+        /// returns true if the requested horizontal line would close a box
+        /// </summary>
+        /// <param name="state">current game state</param>
+        /// <param name="line">requested line</param>
+        public static bool LineClosesHorizontalBox(GameState state, RequestedLine line)
+        {
+
+            bool lineClosesBox = false;
+
+            try
+            {
+
+                Point start = line.Start;
+                Point end = line.End;
+
+                if ( start.Y < state.Height - 1 )
+                {
+                    var leftLineBelow = new RequestedLine(new Point(start.X, start.Y), new Point(start.X, start.Y + 1));
+                    var rightLineBelow = new RequestedLine(new Point(end.X, end.Y), new Point(end.X, end.Y + 1));
+                    var bottomLineBelow = new RequestedLine(new Point(start.X, start.Y + 1), new Point(end.X, end.Y + 1));
+
+                    var checkLines = new List<RequestedLine>()
+                    {
+                        leftLineBelow,
+                        rightLineBelow,
+                        bottomLineBelow
+                    };
+
+                    if (LinesAlreadyExist(checkLines, state))
+                    {
+                        lineClosesBox = true;
+                    }
+                }
+
+                if ( start.Y > 0 )
+                {
+
+                    var leftLineAbove = new RequestedLine(new Point(start.X, start.Y), new Point(start.X, start.Y - 1));
+                    var rightLineAbove = new RequestedLine(new Point(end.X, end.Y), new Point(end.X, end.Y - 1));
+                    var topLineAbove = new RequestedLine(new Point(start.X, start.Y - 1), new Point(end.X, end.Y - 1));
+
+                    var checkLines = new List<RequestedLine>()
+                    {
+                        leftLineAbove,
+                        rightLineAbove,
+                        topLineAbove
+                    };
+
+                    if ( LinesAlreadyExist(checkLines, state) )
+                    {
+                        lineClosesBox = true;
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                LogError("(ex) - " + ex.Message);
+            }
+
+            return lineClosesBox;
+
+        }
+
+        /// <summary>
+        /// returns true if the requested vertical line would close a box
+        /// </summary>
+        /// <param name="state">current game state</param>
+        /// <param name="line">requested line</param>
+        public static bool LineClosesVerticalBox(GameState state, RequestedLine line)
+        {
+
+            bool lineClosesBox = false;
+
+            try
+            {
+
+                Point start = line.Start;
+                Point end = line.End;
+
+                if (start.X < state.Width - 1)
+                {
+                    var topLineRight = new RequestedLine(new Point(start.X, start.Y), new Point(start.X + 1, start.Y));
+                    var bottomLineRight = new RequestedLine(new Point(end.X, end.Y), new Point(end.X + 1, end.Y));
+                    var rightLineRight = new RequestedLine(new Point(start.X + 1, start.Y), new Point(end.X + 1, end.Y));
+
+                    var checkLines = new List<RequestedLine>()
+                    {
+                        topLineRight,
+                        bottomLineRight,
+                        rightLineRight
+                    };
+
+                    if (LinesAlreadyExist(checkLines, state))
+                    {
+                        lineClosesBox = true;
+                    }
+                }
+
+                if (start.X > 0)
+                {
+
+                    var topLineLeft = new RequestedLine(new Point(start.X, start.Y), new Point(start.X - 1, start.Y));
+                    var bottomLineLeft = new RequestedLine(new Point(end.X, end.Y), new Point(end.X - 1, end.Y));
+                    var leftLineLeft = new RequestedLine(new Point(start.X - 1, start.Y), new Point(end.X - 1, end.Y));
+
+                    var checkLines = new List<RequestedLine>()
+                    {
+                        topLineLeft,
+                        bottomLineLeft,
+                        leftLineLeft
+                    };
+
+                    if (LinesAlreadyExist(checkLines, state))
+                    {
+                        lineClosesBox = true;
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                LogError("(ex) - " + ex.Message);
+            }
+
+            return lineClosesBox;
 
         }
 

@@ -36,6 +36,11 @@ namespace GameEngine
 
         }
 
+        /// <summary>
+        /// create an error log entry according to the function and details provided
+        /// </summary>
+        /// <param name="errorFunction">unique pointer to the source of the error for locating the source of the log call</param>
+        /// <param name="errorDetails">details of the specific error thrown to provide details as to what went wrong</param>
         public void LogError (string errorFunction, string errorDetails)
         {
 
@@ -57,6 +62,9 @@ namespace GameEngine
 
         }
 
+        /// <summary>
+        /// Get the single instance of the Logger (singleton)
+        /// </summary>
         public static Logger Instance
         {
             get

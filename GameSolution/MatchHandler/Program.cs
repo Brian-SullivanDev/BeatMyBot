@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using GameEngine;
+using static GameEngine.Utilities;
 
 namespace MatchHandler
 {
@@ -11,6 +12,10 @@ namespace MatchHandler
     class Program
     {
 
+        /// <summary>
+        /// fire off the main event for this console application.  Stage the match between two players
+        /// </summary>
+        /// <param name="args"></param>
         static void Main(string[] args)
         {
 
@@ -24,14 +29,25 @@ namespace MatchHandler
 
             int turnIndex = 0;
 
-            while ( turnIndex < 365 )
+            int totalLines = (state.Height * (state.Width - 1)) + (state.Width * (state.Height - 1));
+
+            int playerID = playerID1;
+
+            bool playSwitchesHands = false;
+
+            while ( turnIndex < totalLines)
             {
+
+                if (playSwitchesHands == true)
+                {
+                    playerID = DetermineNextPlayerID(playerID, playerID1, playerID2);
+                }
+
+                playSwitchesHands = true;
 
                 turnIndex++;
 
                 int turnAttempts = 0;
-
-                int playerID = 0;
 
                 while ( turnAttempts < 10 )
                 {
@@ -40,31 +56,33 @@ namespace MatchHandler
 
                     turnAttempts++;
 
-                    if (turnIndex % 2 == 0)
+                    if (playerID == playerID1)
                     {
 
-                        playerID = playerID1;
                         requestedNextMove = player1Class.MakeNextMove();
 
                     }
                     else
                     {
 
-                        playerID = playerID2;
                         requestedNextMove = player2Class.MakeNextMove();
 
                     }
 
-                    if ( ! ( Utilities.LineIsValid(requestedNextMove, state) ) )
+                    if ( ! ( LineIsValid(requestedNextMove, state) ) )
                     {
-                        Utilities.LogError($"player with ID: {playerID} failed to issue a valid move.  {10 - turnAttempts} attempts remaining.");
+                        LogError($"player with ID: {playerID} failed to issue a valid move.  {10 - turnAttempts} attempts remaining.");
                         continue;
                     }
                     else
                     {
+                        if ( LineWillCloseABox(state, requestedNextMove) == true )
+                        {
+                            playSwitchesHands = false;
+                        }
                         Line nextMoveLine = new Line(requestedNextMove.Start, requestedNextMove.End, playerID);
                         state.addLine(nextMoveLine);
-                        Utilities.LogError($"player with ID: {playerID} added a line from {nextMoveLine.Start} to {nextMoveLine.End}");
+                        LogError($"player with ID: {playerID} added a line from {nextMoveLine.Start} to {nextMoveLine.End}");
                         break;
                     }
 
@@ -77,6 +95,23 @@ namespace MatchHandler
 
             Console.WriteLine("done");
             Console.ReadLine();
+
+        }
+
+        /// <summary>
+        /// get the ID of the player to go next based on the current player's ID
+        /// </summary>
+        static int DetermineNextPlayerID (int currentID, int firstID, int secondID)
+        {
+
+            if ( currentID == firstID )
+            {
+                return secondID;
+            }
+            else
+            {
+                return firstID;
+            }
 
         }
 
