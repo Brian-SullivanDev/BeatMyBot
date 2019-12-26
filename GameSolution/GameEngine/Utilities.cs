@@ -356,6 +356,24 @@ namespace GameEngine
 
         }
 
+        /// <summary>
+        /// return the value casted as an integer or a default value of 0 if the value could not be cast
+        /// </summary>
+        /// <param name="value">value to cast to an integer</param>
+        public static int CheckNullInt(object value)
+        {
+            try
+            {
+
+                return Int32.Parse(value.ToString());
+
+            }
+            catch (Exception)
+            {
+                return 0;
+            }
+        }
+
     }
 
 }

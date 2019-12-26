@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace Web_UI_Interface
 {
-    public partial class Contact : Page
+    public partial class DotGame : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
