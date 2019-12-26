@@ -6,33 +6,44 @@
 <head runat="server">
     <title></title>
     <script type="text/javascript" src="Scripts/core.js"></script>
+    <link href="Content/DotGame.css" rel="stylesheet" />
 </head>
 <body>
     <div class="pageContainer">
 
         <div class="inputsContainer">
 
-            <div class="playerInputsContainer">
+            <div class="playerInputsOuterContainer">
 
-                <div class="firstPlayerInputContainer">
+                <div class="playerInputsInnerContainer">
 
-                    <input class="playerInput" id="PID1" type="text" placeholder="first player ID" />
+                    <div class="firstPlayerInputContainer playerInputContainer">
+                        
+                        <div class="inputComponent">Input player ID for player 1: </div>
+                        <div class="inputComponent">
+                            <input class="playerInput" id="PID1" type="text" placeholder="first player ID" />
+                        </div>
 
-                </div>
+                    </div>
 
-                <div class="secondPlayerInputContainer">
+                    <div class="secondPlayerInputContainer playerInputContainer">
 
-                    <input class="playerInput" id="PID2" type="text" placeholder="second player ID" />
+                        <div class="inputComponent">Input player ID for player 2: </div>
+                        <div class="inputComponent">
+                            <input class="playerInput" id="PID2" type="text" placeholder="second player ID" />
+                        </div>
+
+                    </div>
 
                 </div>
 
             </div>
 
-            <div class="speedInputsContainer">
+            <div class="speedInputsOuterContainer">
 
-                <div class="speedInputContainer">
+                <div class="speedInputsInnerContainer">
 
-                    <div class="speedInput" data-speed="1">Slow</div>
+                    <div class="speedInput active" data-speed="1">Slow</div>
 
                     <div class="speedInput" data-speed="2">Average</div>
 

@@ -1,0 +1,106 @@
+﻿.pageContainer {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+}
+
+.inputsContainer {
+
+    height: 10rem;
+    width: 100%;
+    position: relative;
+
+}
+
+    .playerInputsOuterContainer {
+
+        height: 5rem;
+        width: 100%;
+        background-color: lightgray;
+
+    }
+
+    .playerInputsInnerContainer {
+
+        position: relative;
+        transform: translateY(-50%);
+        top: 50%;
+        margin: 0 auto;
+        text-align: center;
+
+    }
+
+        .playerInputContainer {
+
+            display: inline-block;
+            padding-left: 1rem;
+            padding-right: 1rem;
+
+        }
+
+            .playerInputContainer .inputComponent {
+
+                display: inline-block;
+
+            }
+
+                .inputComponent .playerInput {
+
+                    margin-left: 1rem;
+
+                }
+
+    .speedInputsOuterContainer {
+
+        height: calc( 100% - 5rem );
+        width: 100%;
+        background-color: blue;
+
+    }
+
+        .speedInputsInnerContainer {
+
+            position: relative;
+            text-align: center;
+            top: 50%;
+            transform: translateY(-50%);
+            
+        }
+
+            .speedInput {
+
+                display: inline-block;
+                margin-left: 1rem;
+                margin-right: 1rem;
+                padding: 1rem;
+                background-color: white;
+                color: black;
+                border-radius: 1rem;
+                cursor: pointer;
+                border-width: .25rem;
+                border-style: solid;
+                border-color: black;
+
+            }
+
+            .speedInput:not(.active):hover {
+
+                color: #004400;
+                background-color: #daf9de;
+
+            }
+
+            .speedInput.active.active {
+
+                color: green;
+                background-color: #c3f1c9;
+
+            }
+
+.gameRenderContainer {
+    height: calc( 100% - 10rem );
+    width: 100%;
+    background-color: grey;
+}
