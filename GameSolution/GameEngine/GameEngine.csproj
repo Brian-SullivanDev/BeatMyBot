@@ -42,10 +42,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseClass.cs" />
+    <Compile Include="DatabaseSubstitute.cs" />
     <Compile Include="DemoEngineClass1.cs" />
     <Compile Include="GameState.cs" />
     <Compile Include="Line.cs" />
     <Compile Include="Logger.cs" />
+    <Compile Include="MatchHandler.cs" />
+    <Compile Include="Player.cs" />
     <Compile Include="Point.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilities.cs" />
