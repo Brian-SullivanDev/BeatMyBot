@@ -60,7 +60,7 @@
 
         height: calc( 100% - 5rem );
         width: 100%;
-        background-color: blue;
+        background-color: lightgray;
 
     }
 
@@ -144,24 +144,25 @@
             width: calc( (100% / 9) - .25rem );
             height: calc( 100% - .25rem );
             display: inline-block;
-            border-right-style: solid;
+            border-right-style: dotted;
             border-right-color: black;
             border-right-width: .25rem;
-            border-bottom-style: solid;
+            border-bottom-style: dotted;
             border-bottom-color: black;
             border-bottom-width: .25rem;
+            background-color: white;
         }
 
             .firstRow {
                 height: calc( 100% - .5rem );
-                border-top-style: solid;
+                border-top-style: dotted;
                 border-top-color: black;
                 border-top-width: .25rem;
             }
 
             .firstCol {
                 width: calc( (100% / 9) - .5rem );
-                border-left-style: solid;
+                border-left-style: dotted;
                 border-left-color: black;
                 border-left-width: .25rem;
             }

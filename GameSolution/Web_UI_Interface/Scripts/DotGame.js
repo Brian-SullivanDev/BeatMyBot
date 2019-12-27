@@ -1,5 +1,8 @@
 ﻿let currentSpeedSetting = 3;
 
+let const_cols = 9;
+let const_rows = 9;
+
 ƒ(document)[0].addEventListener("DOMContentLoaded", function () {
 
     ƒ(".speedInput").each(function () {
@@ -18,11 +21,11 @@ let setupGrid = function () {
 
     let newHTML = [];
 
-    for (let row = 0; row < 9; ++row) {
+    for (let row = 0; row < const_rows; ++row) {
 
         newHTML.push('<div class="renderingRow" data-row="' + row + '">');
 
-        for (let col = 0; col < 9; ++col) {
+        for (let col = 0; col < const_cols; ++col) {
 
             let additionalClasses = "";
             if (row === 0) {
@@ -83,9 +86,11 @@ let performSimulate = async function () {
 
     });
 
+    setupGrid();
+
     renderSimulation(JSON.parse(renderInstructions));
 
-    console.log(renderInstructions);
+    //console.log(renderInstructions);
 
 };
 
@@ -142,15 +147,21 @@ let takeRenderStep = function (renderInstructions, index, lastPlayerID) {
 
     setTimeout(function () {
 
+        let nextPlayerID = -1;
+
+        if (index < renderInstructions.length - 1) {
+            nextPlayerID = renderInstructions[index + 1].PlayerID;
+        }
+
         drawLine(x1, y1, x2, y2, color);
 
-        if (currentPlayerID === lastPlayerID) {
+        if (currentPlayerID === nextPlayerID || nextPlayerID === -1) {
             fillAllBoxes(x1, y1, x2, y2, color);
         }
 
         lastPlayerID = currentPlayerID;
 
-        if (index < renderInstructions.length) {
+        if (index < renderInstructions.length - 1) {
             takeRenderStep(renderInstructions, index + 1, lastPlayerID);
         }
 
@@ -255,14 +266,102 @@ let drawVerticalLine = function (x, y1, y2, color) {
 
 };
 
-let fillBox = function (row, col, color) {
+let fillBox = function (col, row, color) {
 
+    if (col >= const_cols || row >= const_rows) {
+        return false;
+    }
 
+    let cell = ƒ(".renderingBox[data-row='" + row + "'][data-col='" + col + "']");
+
+    let bottom = (getComputedStyle(cell[0]).borderBottomStyle !== "dotted");
+        
+
+    let right = (cell[0].style.borderRightStyle !== "dotted");
+
+    let top = false;
+
+    let left = false;
+
+    if (row === 0) {
+
+        top = (getComputedStyle(cell[0]).borderTopStyle !== "dotted");
+
+    }
+    else {
+
+        let topCell = ƒ(".renderingBox[data-row='" + (row - 1) + "'][data-col='" + col + "']");
+
+        top = (getComputedStyle(topCell[0]).borderBottomStyle !== "dotted");
+
+    }
+
+    if (col === 0) {
+
+        left = (getComputedStyle(cell[0]).borderLeftStyle !== "dotted");
+
+    }
+    else {
+
+        let leftCell = ƒ(".renderingBox[data-row='" + row + "'][data-col='" + (col - 1) + "']");
+
+        left = (getComputedStyle(leftCell[0]).borderLeftStyle !== "dotted");
+
+    }
+
+    if (bottom && right && top && left) {
+
+        if (getComputedStyle(cell[0]).backgroundColor === "rgb(255, 255, 255)") {
+
+            cell[0].style.backgroundColor = color;
+
+        }
+
+    }
+
+};
+
+let fillHorizontalBoxes = function (col, row, color) {
+
+    fillBox(col, row, color);
+
+    if (row > 0) {
+
+        fillBox(col, row - 1, color);
+
+    }
+
+};
+
+let fillVerticalBoxes = function (col, row, color) {
+
+    fillBox(col, row, color);
+
+    if (col > 0) {
+
+        fillBox(col - 1, row, color);
+
+    }
 
 };
 
 let fillAllBoxes = function (x1, y1, x2, y2, color) {
 
-    
+    if (x1 !== x2) {
+        if (x1 > x2) {
+            fillHorizontalBoxes(x2, y1, color);
+        }
+        else {
+            fillHorizontalBoxes(x1, y1, color);
+        }
+    }
+    else {
+        if (y1 > y2) {
+            fillVerticalBoxes(x1, y2, color);
+        }
+        else {
+            fillVerticalBoxes(x1, y1, color);
+        }
+    }
 
 };
