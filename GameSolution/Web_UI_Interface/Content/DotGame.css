@@ -1,4 +1,8 @@
-﻿.pageContainer {
+﻿html {
+    font-family: Arial,Helvetica Neue,Helvetica,sans-serif;
+}
+
+.pageContainer {
     height: 100%;
     width: 100%;
     position: absolute;
@@ -99,8 +103,65 @@
 
             }
 
-.gameRenderContainer {
-    height: calc( 100% - 10rem );
+.simulateButtonContainer {
+    height: 5rem;
     width: 100%;
-    background-color: grey;
+    position: relative;
 }
+
+.simulateButton {
+    display: inline-block;
+    position: relative;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0 auto;
+    padding: 1rem;
+    border-width: .25rem;
+    border-style: solid;
+    border-color: black;
+    border-radius: 1rem;
+    cursor: pointer;
+    background-color: #40c140;
+}
+
+.gameRenderContainer {
+    height: calc( 100% - 15rem );
+    width: 100%;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+    .renderingRow {
+        width: 100%;
+        height: calc( 100% / 9 );
+        display: block;
+    }
+
+        .renderingBox {
+            width: calc( (100% / 9) - .25rem );
+            height: calc( 100% - .25rem );
+            display: inline-block;
+            border-right-style: solid;
+            border-right-color: black;
+            border-right-width: .25rem;
+            border-bottom-style: solid;
+            border-bottom-color: black;
+            border-bottom-width: .25rem;
+        }
+
+            .firstRow {
+                height: calc( 100% - .5rem );
+                border-top-style: solid;
+                border-top-color: black;
+                border-top-width: .25rem;
+            }
+
+            .firstCol {
+                width: calc( (100% / 9) - .5rem );
+                border-left-style: solid;
+                border-left-color: black;
+                border-left-width: .25rem;
+            }

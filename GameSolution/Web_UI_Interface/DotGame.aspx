@@ -7,6 +7,7 @@
     <title></title>
     <script type="text/javascript" src="Scripts/core.js"></script>
     <link href="Content/DotGame.css" rel="stylesheet" />
+    <script src="Scripts/DotGame.js"></script>
 </head>
 <body>
     <div class="pageContainer">
@@ -43,11 +44,11 @@
 
                 <div class="speedInputsInnerContainer">
 
-                    <div class="speedInput active" data-speed="1">Slow</div>
+                    <div class="speedInput active" data-speed="3">Slow</div>
 
                     <div class="speedInput" data-speed="2">Average</div>
 
-                    <div class="speedInput" data-speed="3">Fast</div>
+                    <div class="speedInput" data-speed="1">Fast</div>
 
                 </div>
 
@@ -55,9 +56,17 @@
 
         </div>
 
+        <div class="simulateButtonContainer">
+
+            <div class="simulateButton">
+                Simulate
+            </div>
+
+        </div>
+
         <div class="gameRenderContainer">
 
-            rendered game goes here
+            
 
         </div>
 
