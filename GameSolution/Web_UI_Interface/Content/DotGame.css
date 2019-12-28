@@ -166,3 +166,58 @@
                 border-left-color: black;
                 border-left-width: .25rem;
             }
+
+.scoreOverlayContainer {
+
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    height: calc( 100% - 15rem );
+    width: 100%;
+
+}
+
+    .scoreOverlay {
+
+        height: 100%;
+        text-align: center;
+
+    }
+
+        .playerScoreLeft {
+
+            width: calc( 50% - 2rem );
+            position: absolute;
+            top: 0px;
+            left: 2rem;
+            text-align: left;
+
+        }
+
+        .playerScoreRight {
+            
+            width: calc( 50% - 2rem );
+            position: absolute;
+            top: 0px;
+            right: 2rem;
+            text-align: right;
+
+        }
+
+        .playerScore > div {
+
+            display: inline-block;
+
+        }
+
+        .playerScoreLeft .scoreValue {
+
+            color: red;
+
+        }
+
+        .playerScoreRight .scoreValue {
+
+            color: blue;
+
+        }

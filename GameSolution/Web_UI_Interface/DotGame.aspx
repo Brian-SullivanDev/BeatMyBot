@@ -70,6 +70,32 @@
 
         </div>
 
+        <div class="scoreOverlayContainer">
+
+            <div class="scoreOverlay">
+
+                <div class="playerScoreLeft playerScore">
+                    <div class="scoreLabel">
+                        Player 1 Score: 
+                    </div>
+                    <div class="scoreValue">
+                        0
+                    </div>
+                </div>
+
+                <div class="playerScoreRight playerScore">
+                    <div class="scoreLabel">
+                        Player 2 Score: 
+                    </div>
+                    <div class="scoreValue">
+                        0
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
     </div>
 </body>
 </html>

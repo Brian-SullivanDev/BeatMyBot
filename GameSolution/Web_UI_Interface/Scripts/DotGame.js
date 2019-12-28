@@ -63,6 +63,8 @@ let setupGrid = function () {
         ƒ(".gameRenderContainer").height(width.toString() + "px");
     }
 
+    ƒ(".scoreValue").html("0");
+
 };
 
 let performSimulate = async function () {
@@ -156,7 +158,7 @@ let takeRenderStep = function (renderInstructions, index, lastPlayerID) {
         drawLine(x1, y1, x2, y2, color);
 
         if (currentPlayerID === nextPlayerID || nextPlayerID === -1) {
-            fillAllBoxes(x1, y1, x2, y2, color);
+            fillAllBoxes(x1, y1, x2, y2, color, currentPlayerID);
         }
 
         lastPlayerID = currentPlayerID;
@@ -266,7 +268,7 @@ let drawVerticalLine = function (x, y1, y2, color) {
 
 };
 
-let fillBox = function (col, row, color) {
+let fillBox = function (col, row, color, id) {
 
     if (col >= const_cols || row >= const_rows) {
         return false;
@@ -314,6 +316,21 @@ let fillBox = function (col, row, color) {
         if (getComputedStyle(cell[0]).backgroundColor === "rgb(255, 255, 255)") {
 
             cell[0].style.backgroundColor = color;
+            let scoreElem = null;
+            if (id.toString() === ƒ(".firstPlayerInputContainer .playerInput")[0].value) {
+
+                scoreElem = ƒ(".playerScoreLeft .scoreValue");
+
+            }
+            else {
+
+                scoreElem = ƒ(".playerScoreRight .scoreValue");
+
+            }
+
+            let currentScore = scoreElem[0].innerText;
+            let newScore = 1 + parseInt(currentScore);
+            scoreElem.html(newScore);
 
         }
 
@@ -321,46 +338,46 @@ let fillBox = function (col, row, color) {
 
 };
 
-let fillHorizontalBoxes = function (col, row, color) {
+let fillHorizontalBoxes = function (col, row, color, id) {
 
-    fillBox(col, row, color);
+    fillBox(col, row, color, id);
 
     if (row > 0) {
 
-        fillBox(col, row - 1, color);
+        fillBox(col, row - 1, color, id);
 
     }
 
 };
 
-let fillVerticalBoxes = function (col, row, color) {
+let fillVerticalBoxes = function (col, row, color, id) {
 
-    fillBox(col, row, color);
+    fillBox(col, row, color, id);
 
     if (col > 0) {
 
-        fillBox(col - 1, row, color);
+        fillBox(col - 1, row, color, id);
 
     }
 
 };
 
-let fillAllBoxes = function (x1, y1, x2, y2, color) {
+let fillAllBoxes = function (x1, y1, x2, y2, color, id) {
 
     if (x1 !== x2) {
         if (x1 > x2) {
-            fillHorizontalBoxes(x2, y1, color);
+            fillHorizontalBoxes(x2, y1, color, id);
         }
         else {
-            fillHorizontalBoxes(x1, y1, color);
+            fillHorizontalBoxes(x1, y1, color, id);
         }
     }
     else {
         if (y1 > y2) {
-            fillVerticalBoxes(x1, y2, color);
+            fillVerticalBoxes(x1, y2, color, id);
         }
         else {
-            fillVerticalBoxes(x1, y1, color);
+            fillVerticalBoxes(x1, y1, color, id);
         }
     }
 
