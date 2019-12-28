@@ -20,7 +20,7 @@ namespace MatchHandlerConsole
         {
 
             int playerID1 = 1;
-            int playerID2 = 2;
+            int playerID2 = 3;
 
             MatchHandler gameEngine = new MatchHandler(playerID1, playerID2, 10, 10);
 

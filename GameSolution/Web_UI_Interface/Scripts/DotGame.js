@@ -72,13 +72,13 @@ let performSimulate = async function () {
     let player1ID = ƒ(".firstPlayerInputContainer .playerInput")[0].value;
     let player2ID = ƒ(".secondPlayerInputContainer .playerInput")[0].value;
 
-    if (player1ID !== "1" && player1ID !== "2") {
-        alert("first player ID must be a valid value (currently 1 or 2)");
+    if (player1ID !== "1" && player1ID !== "2" && player1ID !== "3" && player1ID !== "4") {
+        alert("first player ID must be a valid value (currently 1, 2, 3, or 4)");
         return;
     }
 
-    if (player2ID !== "1" && player2ID !== "2") {
-        alert("second player ID must be a valid value (currently 1 or 2)");
+    if (player2ID !== "1" && player2ID !== "2" && player2ID !== "3" && player2ID !== "4") {
+        alert("second player ID must be a valid value (currently 1, 2, 3, or 4)");
         return;
     }
 

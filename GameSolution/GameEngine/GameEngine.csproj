@@ -44,6 +44,7 @@
     <Compile Include="BaseClass.cs" />
     <Compile Include="DatabaseSubstitute.cs" />
     <Compile Include="DemoEngineClass1.cs" />
+    <Compile Include="DemoEngineClass2.cs" />
     <Compile Include="GameState.cs" />
     <Compile Include="Line.cs" />
     <Compile Include="Logger.cs" />

@@ -25,6 +25,14 @@ namespace GameEngine
                 {
                     return "GameEngine.DemoEngineClass1";
                 }
+                else if (playerID == 3)
+                {
+                    return "GameEngine.DemoEngineClass2";
+                }
+                else if (playerID == 4)
+                {
+                    return "GameEngine.DemoEngineClass2";
+                }
 
             }
             catch (Exception ex)
