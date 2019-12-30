@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using GameEngine;
+using static GameEngine.Utilities;
 
 namespace AIBuilderEngine
 {
@@ -62,7 +63,20 @@ namespace AIBuilderEngine
         private bool InterpretNextStep()
         {
 
-            return false;
+            bool anotherStepFollows = true;
+
+            try
+            {
+
+
+
+            }
+            catch (Exception ex)
+            {
+                LogError("(ex) - " + ex.Message);
+            }
+
+            return anotherStepFollows;
 
         }
 
