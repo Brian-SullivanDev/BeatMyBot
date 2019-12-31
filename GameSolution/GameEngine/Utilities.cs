@@ -374,6 +374,55 @@ namespace GameEngine
             }
         }
 
+        /// <summary>
+        /// Find the first available line that can be drawn and request it (null if none can be found)
+        /// </summary>
+        public static RequestedLine FindFirstAvailableLine(GameState state)
+        {
+
+            RequestedLine requestedLine = null;
+
+            try
+            {
+
+                for (int row = 0; row < state.Height; ++row)
+                {
+
+                    for (int col = 0; col < state.Width; ++col)
+                    {
+
+                        Point possiblePoint = new Point(col, row);
+
+                        List<Point> adjacentPoints = Utilities.GetAdjacentPoints(possiblePoint, state.Height, state.Width);
+
+                        for (int index = 0; index < adjacentPoints.Count; ++index)
+                        {
+
+                            Point possibleEndPoint = adjacentPoints[index];
+
+                            RequestedLine possibleLine = new RequestedLine(possiblePoint, possibleEndPoint);
+
+                            if (LineIsValid(possibleLine, state))
+                            {
+                                return possibleLine;
+                            }
+
+                        }
+
+                    }
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                LogError("(ex) - " + ex.Message);
+            }
+
+            return requestedLine;
+
+        }
+
     }
 
 }

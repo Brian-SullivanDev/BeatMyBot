@@ -42,10 +42,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AIInterpreter.cs" />
+    <Compile Include="AIResult.cs" />
     <Compile Include="LogicalStep.cs" />
     <Compile Include="LogicalWorkflow.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WorkflowUtilities.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GameEngine\GameEngine.csproj">
+      <Project>{7c8cd781-1678-4dbf-a28f-34618ad1957e}</Project>
+      <Name>GameEngine</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

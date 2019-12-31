@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web_UI_Interface", "Web_UI_
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AIBuilderEngine", "AIBuilderEngine\AIBuilderEngine.csproj", "{3C453ECC-6D95-41FC-A0F1-31C1C437FAF5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AI_Unit_Tests", "AI_Unit_Tests\AI_Unit_Tests.csproj", "{F2157C48-D36D-4E55-AB1F-DD84E39F9A6B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{3C453ECC-6D95-41FC-A0F1-31C1C437FAF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3C453ECC-6D95-41FC-A0F1-31C1C437FAF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3C453ECC-6D95-41FC-A0F1-31C1C437FAF5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F2157C48-D36D-4E55-AB1F-DD84E39F9A6B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2157C48-D36D-4E55-AB1F-DD84E39F9A6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F2157C48-D36D-4E55-AB1F-DD84E39F9A6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2157C48-D36D-4E55-AB1F-DD84E39F9A6B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
