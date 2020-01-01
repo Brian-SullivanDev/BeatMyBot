@@ -59,9 +59,9 @@ namespace AIBuilderEngine
             }
         }
 
-        public AIInterpreter(Dictionary<string, object> variables, LogicalWorkflow workflow, GameState state)
+        public AIInterpreter(LogicalWorkflow workflow, GameState state)
         {
-            _variables = variables;
+            _variables = new Dictionary<string, object>();
             _workflow = workflow;
             _state = state;
             completedWorkflow = false;

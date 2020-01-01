@@ -49,24 +49,13 @@ namespace AIBuilderEngine
             }
         }
 
-        private object[] _variables;
-
-        public object[] Variables
-        {
-            get
-            {
-                return _variables;
-            }
-        }
-
         public LogicalStep (LogicalStep nextStepTrue, LogicalStep nextStepFalse, LogicalStep nextStepElse,
-            AIFunction myFunction, object[] variables)
+            AIFunction myFunction)
         {
             _nextStepTrue = nextStepTrue;
             _nextStepFalse = nextStepFalse;
             _nextStepElse = nextStepElse;
             _function = myFunction;
-            _variables = variables;
         }
 
     }

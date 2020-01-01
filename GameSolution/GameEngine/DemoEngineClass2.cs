@@ -8,7 +8,7 @@ namespace GameEngine
     public class DemoEngineClass2 : BaseClass
     {
 
-        public DemoEngineClass2(GameState initialState) : base(initialState)
+        public DemoEngineClass2 (GameState initialState, int playerID) : base(initialState, playerID)
         {
 
         }

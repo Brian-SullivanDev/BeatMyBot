@@ -20,6 +20,16 @@ namespace GameEngine
             }
         }
 
+        private int _playerID;
+
+        public int PlayerID
+        {
+            get
+            {
+                return _playerID;
+            }
+        }
+
         public void ProcessLastMove(GameState updatedState)
         {
 
@@ -29,10 +39,11 @@ namespace GameEngine
 
         public abstract RequestedLine MakeNextMove();
 
-        public BaseClass (GameState initialState)
+        public BaseClass (GameState initialState, int playerID)
         {
 
             _state = initialState;
+            _playerID = playerID;
 
         }
 

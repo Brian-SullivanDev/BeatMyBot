@@ -18,11 +18,11 @@ namespace AI_Unit_Tests
 
             GameState state = new GameState(10, 10);
 
-            LogicalStep testStep = new LogicalStep(null, null, null, AIFunction.CheckNextOrdinalLine, null);
+            LogicalStep testStep = new LogicalStep(null, null, null, AIFunction.CheckNextOrdinalLine);
 
             LogicalWorkflow workflow = new LogicalWorkflow(testStep);
 
-            AIInterpreter interpreter = new AIInterpreter(null, workflow, state);
+            AIInterpreter interpreter = new AIInterpreter(workflow, state);
 
             interpreter.Interpret();
 

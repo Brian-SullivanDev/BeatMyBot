@@ -244,9 +244,17 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\AIBuilderEngine\AIBuilderEngine.csproj">
+      <Project>{3c453ecc-6d95-41fc-a0f1-31c1c437faf5}</Project>
+      <Name>AIBuilderEngine</Name>
+    </ProjectReference>
     <ProjectReference Include="..\GameEngine\GameEngine.csproj">
       <Project>{7c8cd781-1678-4dbf-a28f-34618ad1957e}</Project>
       <Name>GameEngine</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Matchmaking\Matchmaking.csproj">
+      <Project>{0adc719f-b403-484e-90ae-dbbe791310f9}</Project>
+      <Name>Matchmaking</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

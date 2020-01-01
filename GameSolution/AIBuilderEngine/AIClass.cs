@@ -1,16 +1,32 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using GameEngine;
 using static GameEngine.Utilities;
+using AIBuilderEngine;
+using static AIBuilderEngine.WorkflowUtilities;
+using static AIBuilderEngine.DatabaseSubstitute;
 
-namespace GameEngine
+namespace AIBuilderEngine
 {
 
-    public class DemoEngineClass1 : BaseClass
+    public class AIClass : BaseClass
     {
 
-        public DemoEngineClass1 (GameState initialState, int playerID) : base (initialState, playerID)
+        private LogicalWorkflow _workflow;
+
+        public LogicalWorkflow Workflow
         {
+            get
+            {
+                return _workflow;
+            }
+        }
+
+        public AIClass(GameState initialState, int playerID) : base(initialState, playerID)
+        {
+
+            _workflow = LookupWorkflowByPlayerID(playerID);
 
         }
 
@@ -25,6 +41,8 @@ namespace GameEngine
 
             try
             {
+
+                AIInterpreter interpreter = new AIInterpreter(_workflow, State);
 
                 requestedLine = FindFirstAvailableLine(State);
 
