@@ -79,6 +79,9 @@ namespace Matchmaking
         private BaseClass firstPlayerClass = null;
         private BaseClass secondPlayerClass = null;
 
+        /// <summary>
+        /// The Match Handler takes two player IDs and a height and width for a game and then handlings the match itself
+        /// </summary>
         public MatchHandler(int firstPlayerID, int secondPlayerID, int height, int width)
         {
 
@@ -225,6 +228,9 @@ namespace Matchmaking
 
         }
 
+        /// <summary>
+        /// Internal function to log a provided statement.  In this case, the log is kept as an internal stringbuilder that can be written to a string
+        /// </summary>
         private void AddToGameLog(string logStatement)
         {
 
