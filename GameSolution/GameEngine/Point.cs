@@ -28,6 +28,9 @@ namespace GameEngine
             }
         }
 
+        /// <summary>
+        /// The Point object contains the 0-based X and Y coordinates of a point within the Game
+        /// </summary>
         public Point (int x, int y)
         {
             _x = x;

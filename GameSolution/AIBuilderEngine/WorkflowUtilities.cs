@@ -11,6 +11,9 @@ namespace AIBuilderEngine
     public class WorkflowUtilities
     {
 
+        /// <summary>
+        /// Enumeration for possible AI Functions to use wihtin a Logical Step
+        /// </summary>
         public enum AIFunction
         {
             CreateVariable,
@@ -21,6 +24,9 @@ namespace AIBuilderEngine
 
         }
 
+        /// <summary>
+        /// Enumeration for possible Result paths logic can take during processing of an AI Function within a Logical Step
+        /// </summary>
         public enum StepResult
         {
             True,

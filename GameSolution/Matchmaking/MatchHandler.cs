@@ -169,7 +169,7 @@ namespace Matchmaking
                         playSwitchesHands = false;
                     }
                     Line nextMoveLine = new Line(requestedNextMove.Start, requestedNextMove.End, playerID);
-                    _state.addLine(nextMoveLine);
+                    _state.AddLine(nextMoveLine);
                     AddToGameLog($"player with ID: {playerID} added a line from {nextMoveLine.Start} to {nextMoveLine.End}");
                     break;
                 }

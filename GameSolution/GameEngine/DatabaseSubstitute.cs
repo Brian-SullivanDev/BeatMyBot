@@ -9,6 +9,9 @@ namespace GameEngine
     public class DatabaseSubstitute
     {
 
+        /// <summary>
+        /// Placeholder logic for a database call that looks up a player object Type string by player ID
+        /// </summary>
         public static string LookupPlayerByID (int playerID)
         {
 

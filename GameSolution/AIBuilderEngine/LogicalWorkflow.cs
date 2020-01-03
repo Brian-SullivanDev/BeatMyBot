@@ -18,8 +18,9 @@ namespace AIBuilderEngine
             }
         }
 
-        private bool _reachedLastStep;
-
+        /// <summary>
+        /// The Logical Workflow object points to the first Logical Step and allows an entry point into processing an AI
+        /// </summary>
         public LogicalWorkflow (LogicalStep firstStep)
         {
             _firstStep = firstStep;

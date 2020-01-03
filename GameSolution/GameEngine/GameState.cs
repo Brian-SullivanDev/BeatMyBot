@@ -38,6 +38,9 @@ namespace GameEngine
             }
         }
 
+        /// <summary>
+        /// The Game State object tracks the dimensions of the game as well as the Lines that have been drawn within the game
+        /// </summary>
         public GameState (int height, int width)
         {
 
@@ -47,7 +50,11 @@ namespace GameEngine
 
         }
 
-        public void addLine (Line line)
+        /// <summary>
+        /// Add a line to the current collection of Lines drawn within the current Game State. 
+        /// To be called when a player requests a valid line to be drawn on their turn.
+        /// </summary>
+        public void AddLine (Line line)
         {
             _lines.Add(line);
         }

@@ -29,6 +29,11 @@ namespace AIBuilderEngine
             }
         }
 
+        /// <summary>
+        /// The AI Result object encapsulates a generic value and a StepResult property into a single reusable object
+        /// </summary>
+        /// <param name="value">generic value of the Type specified</param>
+        /// <param name="result">StepResult value that categorizes the finished state of the step (True, False, or Else)</param>
         public AIResult (T value, StepResult result) {
 
             _value = value;

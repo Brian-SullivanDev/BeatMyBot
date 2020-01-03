@@ -8,6 +8,9 @@ namespace GameEngine
     public class DemoEngineClass2 : BaseClass
     {
 
+        /// <summary>
+        /// This player class will always request a random Line that is still available
+        /// </summary>
         public DemoEngineClass2 (GameState initialState, int playerID) : base(initialState, playerID)
         {
 

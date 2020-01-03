@@ -17,7 +17,10 @@ namespace AIBuilderEngine
             DemoWorkflow_Complex = 1
         }
 
-        public static LogicalWorkflow GetSimpleDemoWorkflow ()
+        /// <summary>
+        /// Hard-coded simple workflow to always fetch the next available Ordinal line
+        /// </summary>
+        private static LogicalWorkflow GetSimpleDemoWorkflow ()
         {
 
             LogicalWorkflow workflow = null;
@@ -39,6 +42,9 @@ namespace AIBuilderEngine
 
         }
 
+        /// <summary>
+        /// Placeholder for database logic that provides a lookup of a Workflow that is tied to a player AI by ID
+        /// </summary>
         public static LogicalWorkflow LookupWorkflowByPlayerID (int playerID)
         {
 

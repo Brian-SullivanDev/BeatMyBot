@@ -59,6 +59,10 @@ namespace AIBuilderEngine
             }
         }
 
+        /// <summary>
+        /// The AIInterpreter object is responsible for managing a workflow for an AI class with the provided current state.
+        /// This object is responsible for determining the next RequestedLine for an AI player via the workflow provided.
+        /// </summary>
         public AIInterpreter(LogicalWorkflow workflow, GameState state)
         {
             _variables = new Dictionary<string, object>();
@@ -68,6 +72,10 @@ namespace AIBuilderEngine
             currentStep = null;
         }
 
+        /// <summary>
+        /// Runs through the workflow and attempts to determine the Line for the player to request to be drawn next in the game.
+        /// Returns True if a valid Line was requested and False otherwise.
+        /// </summary>
         public bool Interpret()
         {
 

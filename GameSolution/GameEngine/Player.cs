@@ -29,6 +29,9 @@ namespace GameEngine
             }
         }
 
+        /// <summary>
+        /// The Player object encapsulates the ID of the player and a String reference to the Type of the player's AI logic
+        /// </summary>
         public Player (int playerID)
         {
 

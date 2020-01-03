@@ -9,6 +9,9 @@ namespace GameEngine
     public class DemoEngineClass1 : BaseClass
     {
 
+        /// <summary>
+        /// This player class will always request the next available ordinal Line
+        /// </summary>
         public DemoEngineClass1 (GameState initialState, int playerID) : base (initialState, playerID)
         {
 
